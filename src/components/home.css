@@ -173,3 +173,31 @@ ul{
 .close-menu:hover{
     color: red;
 }
+
+/* grid container */
+.grid-container{
+    overflow: scroll;
+    width: 100vw;
+    height: 86vh;
+    display: grid;
+    grid-template-columns: repeat(4,15%);
+    grid-template-rows: repeat(4,50%);
+    justify-content: center;
+    gap: 20px;
+    padding-top: 5vh;
+}
+.character-card{
+    border: 2px solid gray;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.character-card:hover{
+    box-shadow: 0 0 20px lightgray;
+}
+
+.char-image{
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+}

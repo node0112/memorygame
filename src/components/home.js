@@ -8,6 +8,8 @@ const Home=(objects)=>{
     let gameStart=objects.gameStart
     let currentScore=objects.currentScore
     let bestScore=objects.bestScore
+    let setRendered=objects.setRendered
+    let rendered=objects.rendered
     if(gameStart==false){
         return(
             <div className="home">
@@ -23,7 +25,7 @@ const Home=(objects)=>{
     else if(gameStart==true){
         return(
             <div className="game">
-                <Gamescreen gameStart={gameStart} currentScore={currentScore} bestScore={bestScore} />
+                <Gamescreen gameStart={gameStart} currentScore={currentScore} bestScore={bestScore} setRendered={setRendered}/>
                 <div className={curtainStat}></div>
             </div>
         )
