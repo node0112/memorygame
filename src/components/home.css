@@ -191,6 +191,12 @@ ul{
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Montserrat';
+    text-transform: capitalize;
+    gap: 10px;
+    font-size: 1.7em;
 }
 .character-card:hover{
     box-shadow: 0 0 20px lightgray;
