@@ -19,9 +19,9 @@ const Header=(gameStart)=>{
         <div className="header">
             <div className="logo"><img src={logo} alt="logo"/> Memory Game</div>
             <ul>
-                <li className="header-list-item">GitHub</li>
-                <li className="header-list-item">Source</li>
-                <li className="header-list-item">Other Projects</li>
+                <li className="header-list-item"><a className="header-list-link" href="">GitHub</a></li>
+                <li className="header-list-item"><a className="header-list-link" href="">Source</a></li>
+                <li className="header-list-item"><a className="header-list-link" href="https://github.com/node0112">Other Projects</a></li>
             </ul>
         </div>
     )}

@@ -29,6 +29,14 @@
     color: white;
     justify-content: space-between;
 }
+.header-list-link{
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-out; 
+}
+.header-list-item:hover .header-list-link{
+    color: black;
+}
 .logo{
     width: 30vw;
     display: flex;

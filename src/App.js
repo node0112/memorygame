@@ -3,7 +3,6 @@ import './reset.css'
 import './components/home.css'
 import Home from './components/home';
 import { useState,useEffect } from 'react';
-import Gamescreen from './components/gamescreen';
 import mordecai from './images/mordecai.png';
 import eileen from './images/eileen.png';
 import margaret from './images/margaret.png';
@@ -12,7 +11,7 @@ import rigby from './images/rigby.png';
 import skips from './images/skips.png';
 import thomas from './images/thomas.png';
 import benson from './images/benson.png';
-import { render } from '@testing-library/react'
+
 
 const App=()=>{
 
@@ -22,7 +21,9 @@ const App=()=>{
 
   //game states
   let currentSelected=undefined
-  let score
+  let score=0
+  let started=false
+  let bestScoreDependency=0 //since bestScore is async, we use another var to store the best score so that it can be accesed synchronously
   const [currentScore,setCurrentScore]=useState(0)
   const [bestScore,setBestScore]=useState(0)
   let gameArray=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
@@ -41,11 +42,8 @@ const App=()=>{
         }, 1100);
     })
   },[Home])
+  useEffect(()=>{updateBestScore()},[])
 
-  useEffect(()=>{
-    score=currentScore
-    console.log(score)
-  },[currentScore])
 function genRandomChoice(end){
   choice=Math.floor(Math.random() * (end));
 }
@@ -140,20 +138,39 @@ function removeGrid(){
 }
 
 const updateCurrScore = ()=>setCurrentScore((currentScore) => currentScore+1) //makes it synchronus
-const updateBestScr = (currentScore)=>setBestScore((bestScore) =>  score)
+const resetCurrScore = ()=>setCurrentScore((currentScore)=> 0)
+const updateBestScr = (currentScore)=>setBestScore((bestScore) =>  currentScore)
+
 function updateBestScore(){
-  if(currentScore > bestScore){
-    console.log('sfujjf')
-    updateBestScr()
+  let bestScoreLocal=localStorage.getItem('bestScore')
+  let setItem=()=>{localStorage.setItem('bestScore',bestScoreDependency)}
+  if(bestScoreLocal !== null && started === false){
+    bestScoreDependency=bestScoreLocal
+    console.log(bestScoreLocal)
+    score=bestScoreLocal
+    console.log(score)
+    updateBestScr(score)
+    started = true
   }
-  updateBestScr(3)
-  //setCurrentScore(0)
-  currentSelected=undefined
+  else if( started === false){
+    started = true
+  }
+  else if(started === true){
+    console.log(score)
+    if(bestScoreDependency > bestScoreLocal){
+      setItem()
+    }
+    console.log(score)
+    updateBestScr(score)
+    score=0
+    resetCurrScore()
+    currentSelected=undefined
+  }
 }
 function checkgrid(id){
   let selected=parseInt(id)
   if(currentSelected == undefined){
-    currentSelected =selected
+    currentSelected=selected
     removeGrid()
     createGrid()
   }
@@ -161,14 +178,24 @@ function checkgrid(id){
     if(currentSelected === selected){
       selected=null
       currentSelected=undefined
+      score=score+1
       removeGrid()
       createGrid()
       updateCurrScore()
     }
     else if(currentSelected != selected){
-      updateBestScore()
-      removeGrid()
-      createGrid()
+      if(score>bestScoreDependency){
+        bestScoreDependency=score
+        updateBestScore()
+        score=0
+      }
+      else{
+        score=0
+        resetCurrScore()
+        currentSelected=undefined
+      }
+        removeGrid()
+        createGrid()
     }
   }
 }
