@@ -142,6 +142,7 @@ ul{
     justify-content: space-evenly;
     gap: 50px;
     margin-top: 20%;
+    overflow: scroll;
 }
 .close-menu{
     position: absolute;
@@ -215,3 +216,36 @@ ul{
     width: 100%;
     object-fit: cover;
 }
+
+.rules{
+    overflow: scroll;
+    height: 35vh;
+}
+.rules-title{
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: red;
+    padding: 10px;
+    overflow: scroll;
+}
+.rules-text{
+    font-size: 0.6em;
+    color: white;
+}
+
+/* WebKit and Chromiums scrollbars*/
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }

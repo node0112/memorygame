@@ -37,6 +37,14 @@ const Header=(gameStart)=>{
                     <li className="header-list-item"><a className="header-list-link" target="_blank" href="https://github.com/node0112/memorygame">GitHub</a></li>
                     <li className="header-list-item"><a className="header-list-link" target="_blank" href="https://github.com/node0112/memorygame/tree/main/src">Source</a></li>
                     <li className="header-list-item"><a className="header-list-link" target="_blank" href="https://github.com/node0112">Other Projects</a></li>
+                    <li className="rules">
+                        <div className="rules-title">
+                            Rules + How To:
+                            <div className="rules-text">- Select A Card And After The Grid Refreshes, Select The Same Card</div>
+                            <div className="rules-text">- Everytime you choose a wrong card, the score and current selection will get reset.</div>
+                            <div className="rules-text">- Your Best Score Will Be Stored Locally And Will Remain Even After Closing This Tab!</div>
+                        </div>
+                    </li>
                     </ul>
                 </div>
                 <div className="scoreboard">

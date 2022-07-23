@@ -1,6 +1,7 @@
 import './App.css';
 import './reset.css'
 import './components/home.css'
+import React, { Component }  from 'react';
 import Home from './components/home';
 import { useState,useEffect } from 'react';
 import mordecai from './images/mordecai.png';
